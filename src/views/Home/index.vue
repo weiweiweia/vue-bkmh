@@ -1,16 +1,23 @@
 <template>
   <div class="page-home">
-      <h1>总首页</h1>
-      <router-view/>
+    <IndexHeader/>
+    <router-view />
   </div>
 </template>
 
 <script>
+import IndexHeader from './Components/indexHeader'
 export default {
-  name: 'Home'
+  name: 'Home',
+  components: {
+    IndexHeader
+  }
 }
 </script>
 
-<style>
+<style lang="scss" scored>
+.page-home {
+  height: 100%;
 
+}
 </style>

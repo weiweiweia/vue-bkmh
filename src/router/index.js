@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home/index.vue'
 import Category from '../views/Home/Category'
 import Ranking from '../views/Home/Ranking'
-import Recomment from '../views/Home/Recommend'
+import Recommend from '../views/Home/Recommend'
 import Search from '../views/Search'
 
 Vue.use(VueRouter)
@@ -25,9 +25,9 @@ const routes = [
         component: Ranking
       },
       {
-        path: 'recomment',
-        name: 'Recomment',
-        component: Recomment
+        path: 'recommend',
+        name: 'Recommend',
+        component: Recommend
       },
       {
         path: '',
