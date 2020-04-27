@@ -87,6 +87,9 @@ header {
     li {
       float: left;
       width: 33%;
+      a{
+        font-size: 18px;
+      }
     }
   }
   .router-link-active{
