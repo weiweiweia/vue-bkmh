@@ -45,14 +45,18 @@ export default {
 <style lang="scss" scoped>
 header {
   border-bottom: 1px solid #ccc;
+  padding-bottom: 6px;
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  background: #fff;
+  width: 100%;
   .headertop {
     height: 40px;
-    margin: 10px 10px 4px 10px;
+    display: flex;
+    margin: 10px 10px 0px 10px;
     img:nth-child(1) {
       width: 60px;
-    }
-    a {
-      float: left;
     }
     .download {
       display: block;
