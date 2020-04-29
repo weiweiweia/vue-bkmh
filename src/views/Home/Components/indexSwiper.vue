@@ -27,25 +27,23 @@ export default {
     }
   },
   methods: {
-    swiperinit () {
-      setTimeout(() => {
-        /*eslint-disable */
+    initSwiper () {
+      /*eslint-disable */
         new Swiper(this.$refs.swiper, {
           /* eslint-enable */
-          loop: true, // 循环模式选项
-          observer: true, // 修改swiper自己或子元素时，自动初始化swiper
-          observeParents: true, // 修改swiper的父元素时，自动初始化swiper
-          autoplay: {
-            delay: 2000,
-            stopOnLastSlide: false,
-            disableOnInteraction: true
-          },
-          // 如果需要分页器
-          pagination: {
-            el: '.swiper-pagination'
-          }
-        })
-      }, 500)
+        loop: true, // 循环模式选项
+        observer: true, // 修改swiper自己或子元素时，自动初始化swiper
+        observeParents: true, // 修改swiper的父元素时，自动初始化swiper
+        autoplay: {
+          delay: 2000,
+          stopOnLastSlide: false,
+          disableOnInteraction: true
+        },
+        // 如果需要分页器
+        pagination: {
+          el: '.swiper-pagination'
+        }
+      })
     }
   },
   created () {
@@ -54,7 +52,10 @@ export default {
     })
   },
   mounted () {
-    this.swiperinit()
+
+  },
+  updated () {
+    this.initSwiper()
   }
 }
 </script>

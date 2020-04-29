@@ -31,12 +31,21 @@
         <p class="manga-list-item-small">让世界屈服于她的脚下</p>
       </div>-->
     </div>
+    <footer>
+      <p class="footer-logo"></p>
+      <router-link to="#">安装客户端</router-link>
+      <p class="copy-right">Copyright©buka.cn</p>
+    </footer>
+    <div id="footer-arrow" class="fa fa-arrow-up buka-toup" @click="goTop" v-show="scrollTop>300">
+      <i class="iconfont icon-jiantou-copy"></i>
+    </div>
   </div>
 </template>
 
 <script>
 import IndexSwiper from '../Components/indexSwiper'
 import { getRecommend } from '@/api/cartoon'
+import '@/assets/font/iconfont.css'
 export default {
   name: 'Recommend',
   components: {
@@ -44,7 +53,20 @@ export default {
   },
   data () {
     return {
-      recommendList: []
+      recommendList: [],
+      scrollTop: 0
+    }
+  },
+  methods: {
+    goTop (e) {
+      document.documentElement.scrollTop = 0
+    },
+    handleScroll () {
+      var scrollTop =
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop
+      this.scrollTop = scrollTop
     }
   },
   created () {
@@ -54,6 +76,9 @@ export default {
     getRecommend().then(res => {
       this.recommendList = res.datas.items.slice(1, 8)
     })
+  },
+  mounted () {
+    window.addEventListener('scroll', this.handleScroll)
   }
 }
 </script>
@@ -114,5 +139,51 @@ export default {
 }
 .home-module-title {
   font-size: 16px;
+}
+footer {
+  box-sizing: border-box;
+  text-align: center;
+  .footer-logo {
+    margin: 10px auto 0;
+    width: 145px;
+    height: 30px;
+    background-image: url("~@/assets/img/footer-logo.png");
+    background-size: 145px 30px;
+  }
+  a {
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 15px;
+    color: #fff;
+    background: #fe960e;
+    margin: 0 auto;
+  }
+  .copy-right {
+    font-size: 14px;
+    color: #ccc;
+    margin-top: 10px;
+  }
+}
+.buka-toup {
+  position: fixed;
+  font-size: 25px;
+  bottom: 15px;
+  width: 30px;
+  height: 30px;
+  right: 15px;
+  text-align: center;
+  line-height: 30px;
+  z-index: 999;
+  color: #fff;
+  border-radius: 50%;
+  background: #fe960e;
+  padding: 5px;
+  opacity: 0.8;
+  display: inline-block;
+  .icon-jiantou-copy {
+    font-size: 30px;
+  }
 }
 </style>
