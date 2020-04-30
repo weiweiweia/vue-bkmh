@@ -5,6 +5,7 @@ import Category from '../views/Home/Category'
 import Ranking from '../views/Home/Ranking'
 import Recommend from '../views/Home/Recommend'
 import Search from '../views/Search'
+import SearchResult from '../views/SearchResult'
 
 Vue.use(VueRouter)
 
@@ -39,6 +40,11 @@ const routes = [
     path: '/search',
     name: 'Search',
     component: Search
+  },
+  {
+    path: '/searchresult',
+    name: 'SearchResult',
+    component: SearchResult
   },
   {
     path: '/',

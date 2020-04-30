@@ -1,6 +1,6 @@
 <template>
   <div class="page-recommend">
-    <IndexSwiper />
+    <IndexSwiper :loop="true"/>
     <div v-for="item in recommendList" :key="item.id" class="home-module">
       <p class="home-module-title">
         <span class="home-module-title-icon"></span>
@@ -75,6 +75,8 @@ export default {
     // })
     getRecommend().then(res => {
       this.recommendList = res.datas.items.slice(1, 8)
+    }).catch(err => {
+      alert(err, '请求数据失败')
     })
   },
   mounted () {

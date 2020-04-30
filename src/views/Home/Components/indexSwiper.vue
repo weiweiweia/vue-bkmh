@@ -4,9 +4,6 @@
       <div class="swiper-slide" v-for="item in swiperList" :key="item.id">
         <img :src="item.pic_url" alt />
       </div>
-      <!-- <div class="swiper-slide">
-          <img src="http://c-r7.ibuka.cn/auto/appRecom/202004231806_5ea168a644114.jpg" alt="">
-      </div>-->
     </div>
     <!-- 如果需要分页器 -->
     <div class="swiper-pagination"></div>
@@ -26,14 +23,18 @@ export default {
       swiperList: []
     }
   },
+  props: {
+    loop: {
+      type: Boolean,
+      default: true
+    }
+  },
   methods: {
     initSwiper () {
       /*eslint-disable */
-        new Swiper(this.$refs.swiper, {
-          /* eslint-enable */
-        loop: true, // 循环模式选项
-        observer: true, // 修改swiper自己或子元素时，自动初始化swiper
-        observeParents: true, // 修改swiper的父元素时，自动初始化swiper
+      new Swiper(this.$refs.swiper, {
+        /* eslint-enable */
+        loop: this.loop, // 循环模式选项
         autoplay: {
           delay: 2000,
           stopOnLastSlide: false,
@@ -49,11 +50,11 @@ export default {
   created () {
     getRecommend().then(res => {
       this.swiperList = res.datas.items[0].items
+    }).catch(err => {
+      console.log(err)
     })
   },
-  mounted () {
-
-  },
+  mounted () {},
   updated () {
     this.initSwiper()
   }
